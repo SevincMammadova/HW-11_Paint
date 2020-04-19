@@ -75,5 +75,12 @@ View.prototype.onMouseMove = function(callback) {
     })
 }
 
+View.prototype.changeColoring = function() {
+    const coloring = document.getElementById('color').addEventListener('oninput', function () {
+        
+    })
+    this._colorInput = coloring;
+   
+}
 
 module.exports = View;
