@@ -11,7 +11,7 @@ function Controller(model, view) {
 }
 
 Controller.prototype.init = function() {
-    this._ctx = this._view.getCanvasContext()
+    this._ctx = this._view.getCanvasContext();
     this._view.onMouseDown(this.startDraw.bind(this));
     this._view.onMouseUp(this.stopDraw.bind(this));
     this._view.onMouseMove(this.isMouseDraw.bind(this));
@@ -58,11 +58,11 @@ Controller.prototype._addLine = function(x, y) {
 }
 
 Controller.prototype.changeWidth = function() {
-
+    
 }
 
 Controller.prototype.changeColor = function() {
-
+    this._color = this.value;
 }
 
 module.exports = Controller;

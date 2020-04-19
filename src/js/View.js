@@ -2,18 +2,22 @@ function View() {
     this._root = document.querySelector('div#root');
     this._canvas = null;
     this._ctx = null;
+    this._colorInput = null;
 
     this.init();
 }
 
-const createInput = (id, type, value) => {
+const createInput = (id, type, min, max, step) => {
     const wrapper = document.createElement('div');
 
     const input = document.createElement('input');
     input.setAttribute('id', id);
     input.setAttribute('type', type);
 
-    value && (input.value = value);
+    // value && (input.value = value);
+    min && (input.min = min);
+    max && (input.max = max);
+    step && (input.step = step);
     wrapper.append(input);
 
     return wrapper;
@@ -32,8 +36,8 @@ const createCanvas = () => {
 
 View.prototype.init = function() {
     this._canvas = createCanvas();
-    const colorInput = createInput('color', 'color', '#00000');
-    const rangeInput = createInput('range', 'range');
+    const colorInput = createInput('color', 'color');
+    const rangeInput = createInput('range', 'range','0','50', '1');
 
     this._root.append(this._canvas);
     this._root.append(colorInput);
@@ -70,5 +74,6 @@ View.prototype.onMouseMove = function(callback) {
         callback(layerX, layerY);
     })
 }
+
 
 module.exports = View;
