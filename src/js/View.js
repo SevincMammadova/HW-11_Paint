@@ -51,14 +51,14 @@ View.prototype.getCanvasContext = () => {
 
 View.prototype.onCanvasClick = function(callback) {
     this._canvas.addEventListener('click', function(event) {
-        const { layerX, layerY } = event;
+        const {layerX, layerY} = event;
         callback(layerX, layerY);
     })
 }
 
 View.prototype.onMouseDown = function(callback) {
     this._canvas.addEventListener('mousedown', function(event) {
-        const { layerX, layerY } = event;
+        const {layerX, layerY} = event;
         callback(layerX, layerY);
     })
 }
@@ -71,7 +71,7 @@ View.prototype.onMouseUp = function(callback) {
 
 View.prototype.onMouseMove = function(callback) {
     this._canvas.addEventListener('mousemove', function(event) {
-        const { layerX, layerY } = event;
+        const {layerX, layerY} = event;
         callback(layerX, layerY);
     })
 }

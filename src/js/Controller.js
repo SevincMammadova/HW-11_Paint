@@ -52,7 +52,10 @@ Controller.prototype.isMouseDraw =function(x,y) {
 
 Controller.prototype._addLine = function(x, y) {
     const line = {
-        start: { x: this._x, y: this._y },
+        start: { 
+            x: this._x,
+            y: this._y,
+        },
         end: { x, y},
     }
 
