@@ -3,6 +3,7 @@ function View() {
     this._canvas = null;
     this._ctx = null;
     this._colorInput = null;
+    this._rangeInput = null;
 
     this.init();
 }
@@ -14,7 +15,7 @@ const createInput = (id, type, min, max, step) => {
     input.setAttribute('id', id);
     input.setAttribute('type', type);
 
-    // value && (input.value = value);
+    input.value = '';
     min && (input.min = min);
     max && (input.max = max);
     step && (input.step = step);
@@ -36,12 +37,12 @@ const createCanvas = () => {
 
 View.prototype.init = function() {
     this._canvas = createCanvas();
-    const colorInput = createInput('color', 'color');
-    const rangeInput = createInput('range', 'range','0','50', '1');
+    this._colorInput = createInput('color', 'color');
+    this._rangeInput = createInput('range', 'range','0','50', '1');
 
     this._root.append(this._canvas);
-    this._root.append(colorInput);
-    this._root.append(rangeInput);
+    this._root.append(this._colorInput);
+    this._root.append(this._rangeInput);
 }
 
 View.prototype.getCanvasContext = () => {
@@ -75,12 +76,18 @@ View.prototype.onMouseMove = function(callback) {
     })
 }
 
-View.prototype.changeColoring = function() {
-    const coloring = document.getElementById('color').addEventListener('oninput', function () {
+View.prototype.changeColoring = function(cb) {
+    this._colorInput.addEventListener('change', function (event) {
         
-    })
-    this._colorInput = coloring;
-   
+         cb(event.target.value);
+   }) 
+}
+
+View.prototype.changeSize = function(cb) {
+    this._rangeInput.addEventListener('change', function (event) {
+        
+        cb(event.target.value);
+  }) 
 }
 
 module.exports = View;

@@ -16,6 +16,7 @@ Controller.prototype.init = function() {
     this._view.onMouseUp(this.stopDraw.bind(this));
     this._view.onMouseMove(this.isMouseDraw.bind(this));
     this._view.changeColoring(this.changeColor.bind(this));
+    this._view.changeSize(this.changeWidth.bind(this));
 }
 
 Controller.prototype.startDraw = function(x, y) {
@@ -58,13 +59,12 @@ Controller.prototype._addLine = function(x, y) {
     return line;
 }
 
-Controller.prototype.changeWidth = function() {
-    this._width = this.value;
+Controller.prototype.changeWidth = function(width) {
+    this._width = width; 
 }
 
-Controller.prototype.changeColor = function() {
-    this._color = this._value;
-    
+Controller.prototype.changeColor = function(color) {
+    this._color = color; 
 }
 
 module.exports = Controller;
